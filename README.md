@@ -1,56 +1,74 @@
-# Welcome to your Expo app 👋
+# collection-archive
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A minimal Expo app with two tabs and localization support for English and Spanish.
 
-## Get started
+## Getting started
 
 1. Install dependencies
 
    ```bash
-   npm install
+   pnpm install
    ```
 
-2. Start the app
+2. Run the app in English
 
    ```bash
-   npx expo start
+   pnpm run start:en
    ```
 
-In the output, you'll find options to open the app in a
+3. Run the app in Spanish
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+   ```bash
+   pnpm run start:es
+   ```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+4. Run the web app in English
 
-## Get a fresh project
+   ```bash
+   pnpm run web:en
+   ```
 
-When you're ready, run:
+5. Run the web app in Spanish
 
-```bash
-npm run reset-project
-```
+   ```bash
+   pnpm run web:es
+   ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Scripts
 
-### Other setup steps
+- `pnpm run start` — start Expo in the default locale
+- `pnpm run start:en` — start Expo in English
+- `pnpm run start:es` — start Expo in Spanish
+- `pnpm run web:en` — start the web app in English
+- `pnpm run web:es` — start the web app in Spanish
+- `pnpm run lint` — run Expo lint
+- `pnpm run reset-project` — reset starter app files
+- `pnpm run bump-version` — bump the version patch level
+- `pnpm run bump-version -- patch` — bump the version patch level
+- `pnpm run bump-version -- minor` — bump the version minor level
+- `pnpm run bump-version -- major` — bump the version major level
+- `pnpm run bump-version -- X.Y.Z` — set an explicit version
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+## Localization
 
-## Learn more
+This app reads the locale from the `APP_LOCALE` environment variable and supports:
 
-To learn more about developing your project with Expo, look at the following resources:
+- `en` — English
+- `es` — Spanish
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Project structure
 
-## Join the community
+- `src/app/index.tsx` — Home tab
+- `src/app/statistics.tsx` — Statistics tab
+- `src/components/app-tabs.tsx` — Native tab navigator
+- `src/components/app-tabs.web.tsx` — Web tab navigator
+- `src/locales/en.json` — English translations
+- `src/locales/es.json` — Spanish translations
 
-Join our community of developers creating universal apps.
+## Changelog
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+See `CHANGELOG.md` for release history.
+
+## License
+
+This project is licensed under the MIT License. See `LICENSE`.

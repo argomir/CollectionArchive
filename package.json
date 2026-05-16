@@ -1,14 +1,20 @@
 {
   "name": "collection-archive",
   "main": "expo-router/entry",
-  "version": "1.0.0",
+  "version": "0.0.1",
+  "license": "MIT",
   "scripts": {
-    "start": "expo start",
-    "reset-project": "node ./scripts/reset-project.js",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "lint": "expo lint"
+    "start": "pnpm exec expo start",
+    "start:en": "cross-env APP_LOCALE=en pnpm exec expo start",
+    "start:es": "cross-env APP_LOCALE=es pnpm exec expo start",
+    "web": "pnpm exec expo start --web",
+    "web:en": "cross-env APP_LOCALE=en pnpm exec expo start --web",
+    "web:es": "cross-env APP_LOCALE=es pnpm exec expo start --web",
+    "android": "pnpm exec expo start --android",
+    "ios": "pnpm exec expo start --ios",
+    "lint": "pnpm exec expo lint",
+    "reset-project": "pnpm exec node ./scripts/reset-project.js",
+    "bump-version": "pnpm exec node ./scripts/bump-version.js"
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "^7.15.5",
@@ -39,6 +45,7 @@
   },
   "devDependencies": {
     "@types/react": "~19.2.2",
+    "cross-env": "^7.0.3",
     "typescript": "~5.9.2"
   },
   "private": true
