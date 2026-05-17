@@ -1,59 +1,83 @@
-import { Tabs, TabList, TabTrigger, TabSlot, TabTriggerSlotProps } from 'expo-router/ui';
-import React from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { usePathname } from "expo-router";
+import { TabList, Tabs, TabSlot, TabTrigger } from "expo-router/ui";
+import React from "react";
+import { StyleSheet, View } from "react-native";
 
-import { ThemedText } from './themed-text';
-import { ThemedView } from './themed-view';
-import { strings } from '@/i18n';
+import { strings } from "@/i18n";
+import { ThemedText } from "./themed-text";
+import { ThemedView } from "./themed-view";
+
+const tabs = [
+  { label: strings.tabHome, href: "/" as const },
+  { label: strings.tabStatistics, href: "/statistics" as const },
+];
 
 export default function AppTabs() {
-  return (
-    <Tabs>
-      <TabSlot style={{ height: '100%' }} />
-      <TabList asChild>
-        <View style={styles.tabListContainer}>
-          <TabTrigger name="home" href="/" asChild>
-            <TabButton>{strings.tabHome}</TabButton>
-          </TabTrigger>
-          <TabTrigger name="statistics" href="/statistics" asChild>
-            <TabButton>{strings.tabStatistics}</TabButton>
-          </TabTrigger>
-        </View>
-      </TabList>
-    </Tabs>
-  );
-}
+  const pathname = usePathname();
+  const activePath = pathname?.split("?")[0] ?? "/";
 
-export function TabButton({ children, isFocused, ...props }: TabTriggerSlotProps) {
   return (
-    <Pressable {...props} style={({ pressed }) => pressed && styles.pressed}>
-      <ThemedView
-        type={isFocused ? 'backgroundSelected' : 'backgroundElement'}
-        style={styles.tabButtonView}>
-        <ThemedText type="small" themeColor={isFocused ? 'text' : 'textSecondary'}>
-          {children}
-        </ThemedText>
-      </ThemedView>
-    </Pressable>
+    <View style={styles.container}>
+      <Tabs style={styles.tabs}>
+        <TabSlot style={styles.tabSlot} />
+        <TabList style={styles.tabList}>
+          {tabs.map((tab) => {
+            const isActive = activePath === tab.href;
+            return (
+              <TabTrigger
+                key={tab.href}
+                name={tab.href === "/" ? "index" : "statistics"}
+                href={tab.href}
+                style={styles.tabTrigger}
+              >
+                <ThemedView
+                  type={isActive ? "backgroundSelected" : "backgroundElement"}
+                  style={styles.tabButton}
+                >
+                  <ThemedText
+                    type="smallBold"
+                    themeColor={isActive ? "text" : "textSecondary"}
+                  >
+                    {tab.label}
+                  </ThemedText>
+                </ThemedView>
+              </TabTrigger>
+            );
+          })}
+        </TabList>
+      </Tabs>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  tabListContainer: {
-    position: 'absolute',
-    width: '100%',
-    padding: 16,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
-    gap: 12,
+  container: {
+    flex: 1,
   },
-  pressed: {
-    opacity: 0.7,
+  tabs: {
+    flex: 1,
   },
-  tabButtonView: {
+  tabSlot: {
+    flex: 1,
+  },
+  tabList: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderTopWidth: 1,
+    borderTopColor: "#CCCCCC",
+    backgroundColor: "#F0F0F3",
+  },
+  tabTrigger: {
+    flex: 1,
+  },
+  tabButton: {
+    alignItems: "center",
+    justifyContent: "center",
     paddingVertical: 10,
     paddingHorizontal: 18,
-    borderRadius: 12,
+    borderRadius: 14,
   },
 });

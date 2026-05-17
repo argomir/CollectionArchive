@@ -1,5 +1,22 @@
 {
   "tabHome": "Home",
   "tabStatistics": "Statistics",
-  "emptyWindow": "Empty window"
+  "emptyWindow": "Empty window",
+  "noCollections": "No collections yet",
+  "noCollectionsHint": "Tap the + button to create your first collection",
+  "itemsCount": "items",
+  "itemCount": "item",
+  "createNewCollection": "Create new collection",
+  "createCollectionFormTitle": "New collection",
+  "createCollectionTitleLabel": "Title",
+  "createCollectionDescriptionLabel": "Description",
+  "createCollectionOwnerLabel": "Owner",
+  "createCollectionCategoryLabel": "Category",
+  "createCollectionCategoryPlaceholder": "Books, Vinyl, Art",
+  "createCollectionTagsLabel": "Tags",
+  "createCollectionTagsPlaceholder": "comma-separated tags",
+  "createCollectionImageLabel": "Image URL",
+  "createCollectionSubmit": "Save collection",
+  "collectionSavedSuccess": "Collection saved successfully.",
+  "collectionSaveFailed": "Unable to save the collection. Please try again."
 }

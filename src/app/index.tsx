@@ -1,18 +1,27 @@
-import { StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useRouter } from "expo-router";
+import { StyleSheet, View } from "react-native";
 
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { strings } from '@/i18n';
+import { CollectionList } from "@/components/collection-list";
+import { FloatingActionButton } from "@/components/floating-action-button";
+import { ThemedView } from "@/components/themed-view";
+import { useOwnedCollections } from "@/hooks/use-collections";
+
+const CURRENT_USER = "John Doe";
 
 export default function HomeScreen() {
+  const router = useRouter();
+  const { collections } = useOwnedCollections(CURRENT_USER);
+
+  const handleCreateCollection = () => {
+    router.push("/create");
+  };
+
   return (
     <ThemedView style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
-        <ThemedText type="title" style={styles.title}>
-          {strings.emptyWindow}
-        </ThemedText>
-      </SafeAreaView>
+      <View style={styles.content}>
+        <CollectionList collections={collections} />
+      </View>
+      <FloatingActionButton onPress={handleCreateCollection} />
     </ThemedView>
   );
 }
@@ -20,16 +29,8 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'row',
   },
-  safeArea: {
+  content: {
     flex: 1,
-    paddingHorizontal: 24,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    textAlign: 'center',
   },
 });

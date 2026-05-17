@@ -1,5 +1,22 @@
 {
   "tabHome": "Inicio",
   "tabStatistics": "Estadísticas",
-  "emptyWindow": "Ventana vacía"
+  "emptyWindow": "Ventana vacía",
+  "noCollections": "Sin colecciones aún",
+  "noCollectionsHint": "Toca el botón + para crear tu primera colección",
+  "itemsCount": "elementos",
+  "itemCount": "elemento",
+  "createNewCollection": "Crear nueva colección",
+  "createCollectionFormTitle": "Nueva colección",
+  "createCollectionTitleLabel": "Título",
+  "createCollectionDescriptionLabel": "Descripción",
+  "createCollectionOwnerLabel": "Propietario",
+  "createCollectionCategoryLabel": "Categoría",
+  "createCollectionCategoryPlaceholder": "Libros, Vinilo, Arte",
+  "createCollectionTagsLabel": "Etiquetas",
+  "createCollectionTagsPlaceholder": "etiquetas separadas por comas",
+  "createCollectionImageLabel": "URL de la imagen",
+  "createCollectionSubmit": "Guardar colección",
+  "collectionSavedSuccess": "Colección guardada con éxito.",
+  "collectionSaveFailed": "No se pudo guardar la colección. Intenta de nuevo."
 }

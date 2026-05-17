@@ -1,8 +1,16 @@
 # collection-archive
 
-A minimal Expo app with two tabs and localization support for English and Spanish.
+A minimal Expo app for managing and archiving collections with Firestore integration.
 
 ## Getting started
+
+### Prerequisites
+
+- Node.js
+- pnpm
+- Expo Go (for mobile)
+
+### Installation
 
 1. Install dependencies
 
@@ -56,12 +64,22 @@ This app reads the locale from the `APP_LOCALE` environment variable and support
 - `en` — English
 - `es` — Spanish
 
+## Features
+
+- **Collection Management**: Create and view collections stored in Firebase Firestore.
+- **Light Mode**: Enforced light theme across the application for consistency.
+- **Localization**: Full support for English and Spanish locales.
+- **Responsive Design**: Optimized for both Mobile (iOS/Android) and Web.
+
 ## Project structure
 
 - `src/app/index.tsx` — Home tab
+- `src/app/create.tsx` — Create collection screen (modal)
 - `src/app/statistics.tsx` — Statistics tab
-- `src/components/app-tabs.tsx` — Native tab navigator
+- `src/components/app-tabs.tsx` — Custom footer navigation component
 - `src/components/app-tabs.web.tsx` — Web tab navigator
+- `src/repositories/` — Firestore data access layer (Repository pattern)
+- `src/services/` — Business logic layer
 - `src/locales/en.json` — English translations
 - `src/locales/es.json` — Spanish translations
 
